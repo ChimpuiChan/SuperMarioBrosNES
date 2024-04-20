@@ -95,4 +95,16 @@ public class MarioMovement : MonoBehaviour
         position.x = Mathf.Clamp(position.x, leftEdge.x + 0.5f, rightEdge.x -0.5f);
         rb.MovePosition(position);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // If Mario collides with any object other than "PowerUp" layer and direction of collision is "Vector2.up" which means whether Mario's head is hitting block, then velocity.y = 0 so Mario just falls down and doesn't get stuck to the block for a while
+        if (collision.gameObject.layer != LayerMask.NameToLayer("PowerUp"))
+        {
+            if(transform.DotProd(collision.transform, Vector2.up))
+            {
+                velocity.y = 0;
+            }
+        }
+    }
 }
