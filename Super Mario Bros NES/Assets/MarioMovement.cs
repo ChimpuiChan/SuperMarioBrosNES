@@ -28,6 +28,15 @@ public class MarioMovement : MonoBehaviour
     private bool isFalling;
     private float gravMul;
 
+    // Mathf.Abs() is for isRunning to be true even when Mario moving to the left
+    // The 0.25f threshold is just for it to feel good so that Mario's run animation plays only if the absolute velocity is at least 0.25f or the absolute value of inputAxis is at least 0.25f
+    public bool isRunning => Mathf.Abs(velocity.x) > 0.25f || Mathf.Abs(inputAxis) > 0.25f;
+
+    // Slide when holding left but Mario's x-velocity is positive and vice versa
+    public bool isSliding => (inputAxis > 0 && velocity.x < 0) || (inputAxis < 0 && velocity.x > 0);
+
+    
+
     private void Start()
     {
 
@@ -64,6 +73,15 @@ public class MarioMovement : MonoBehaviour
         if (rb.Raycast(Vector2.right * inputAxis))
         {
             velocity.x = 0;
+        }
+
+        if (velocity.x > 0)
+        {
+            transform.eulerAngles = Vector3.zero;
+        }
+        else if (velocity.x < 0)
+        {
+            transform.eulerAngles = new Vector3(0f, 180f, 0f);
         }
     }
 
