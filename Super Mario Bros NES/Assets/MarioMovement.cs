@@ -58,6 +58,13 @@ public class MarioMovement : MonoBehaviour
     {
         inputAxis = Input.GetAxis("Horizontal");
         velocity.x = Mathf.MoveTowards(velocity.x, inputAxis * moveSpeed, moveSpeed * Time.deltaTime);
+
+        // Check if Mario is colliding with wall
+        // Multiplying with inputAxis for left and right raycast
+        if (rb.Raycast(Vector2.right * inputAxis))
+        {
+            velocity.x = 0;
+        }
     }
 
     private void Jump()

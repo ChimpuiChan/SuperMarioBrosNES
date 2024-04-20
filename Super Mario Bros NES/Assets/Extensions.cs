@@ -19,7 +19,7 @@ public static class Extensions
         float distance = 0.375f;
 
         // CircleCast parameters: position of rigidbody defined as rb, radius and distance defined above, direction is Vector2 that will be given as a parameter when this Raycast funtion is used in any other script and layerMask is given "Default" which only returns something if raycast hits objects on "Default" layer, while Mario is set to "Player" layer so raycast ignores Mario's collider
-        RaycastHit2D hit = Physics2D.CircleCast(rb.position, radius, direction, distance, layerMask);
+        RaycastHit2D hit = Physics2D.CircleCast(rb.position, radius, direction.normalized, distance, layerMask);
 
         // Return if ray hits any collider and is not the rigidbody that is defined above
         return hit.collider != null && hit.rigidbody != rb;
