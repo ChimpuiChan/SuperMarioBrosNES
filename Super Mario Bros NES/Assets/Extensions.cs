@@ -34,6 +34,8 @@ public static class Extensions
         // Normalized the direction so its magnitude is always 1 so that it just specifies the direction
         // The dot product of the two vectors are calculated here. Resulting in a float value
         // x1 * x2 + y1 * y2 is the formula for dot product calculation
+        // The testDirection is the direction that is intended for this to return true
+        // It compared the calculated direction with the testDirection and returns if they are same, perpendicular or opposite to each other
         return Vector2.Dot(direction.normalized, testDirection) > 0.25f;
     }
 }

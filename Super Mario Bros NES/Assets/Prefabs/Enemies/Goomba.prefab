@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3403443904078248809}
   - component: {fileID: 5162351605491459544}
   - component: {fileID: 712607163495907380}
+  - component: {fileID: 1831425259732380602}
   m_Layer: 7
   m_Name: Goomba
   m_TagString: Untagged
@@ -181,3 +182,18 @@ MonoBehaviour:
   moveSpeed: 2
   direction: {x: -1, y: 0}
   velocity: {x: 0, y: 0}
+--- !u!114 &1831425259732380602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449912723473411013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1d8fa92b442abe4eafe69a39ee17d62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 2974796402227262206}
+  rb: {fileID: 3403443904078248809}
+  squishedGoomba: {fileID: 21300000, guid: f78744411cb1bb649aab5a4778f10016, type: 3}

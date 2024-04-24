@@ -35,13 +35,6 @@ public class MarioMovement : MonoBehaviour
     // Slide when holding left but Mario's x-velocity is positive and vice versa
     public bool isSliding => (inputAxis > 0 && velocity.x < 0) || (inputAxis < 0 && velocity.x > 0);
 
-    
-
-    private void Start()
-    {
-
-    }
-
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -123,10 +116,20 @@ public class MarioMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // If Mario collides with any object other than "PowerUp" layer and direction of collision is "Vector2.up" which means whether Mario's head is hitting block, then velocity.y = 0 so Mario just falls down and doesn't get stuck to the block for a while
-        if (collision.gameObject.layer != LayerMask.NameToLayer("PowerUp"))
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            if(transform.DotProd(collision.transform, Vector2.up))
+
+            // To bounce off enemy after jumping on top of them
+            if (transform.DotProd(collision.transform, Vector2.down))
+            {
+                velocity.y = jumpForce / 2f;
+            }
+        }
+        // If Mario collides with any object other than "PowerUp" layer and direction of collision is "Vector2.up" which means whether Mario's head is hitting block, then velocity.y = 0 so Mario just falls down and doesn't get stuck to the block for a while
+        else if (collision.gameObject.layer != LayerMask.NameToLayer("PowerUp"))
+        {
+            if (transform.DotProd(collision.transform, Vector2.up))
             {
                 velocity.y = 0;
             }
