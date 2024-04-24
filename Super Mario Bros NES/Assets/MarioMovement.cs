@@ -23,7 +23,7 @@ public class MarioMovement : MonoBehaviour
     public float gravity => (-2f * maxJumpHeight) / Mathf.Pow((maxJumpTime / 2f), 2);
 
     // Making it have a public getter but a private setter so only this class can modify its value
-    public bool isGrounded { get; private set; }
+    public bool isGrounded { get; private set; } // Public getter, private setter
     public bool isJumping { get; private set; }
     private bool isFalling;
     private float gravMul;
