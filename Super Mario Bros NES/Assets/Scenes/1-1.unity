@@ -6200,7 +6200,9 @@ GameObject:
   - component: {fileID: 1169101840}
   - component: {fileID: 1169101842}
   - component: {fileID: 1169101841}
+  - component: {fileID: 1169101845}
   - component: {fileID: 1169101843}
+  - component: {fileID: 1169101844}
   m_Layer: 3
   m_Name: Mario
   m_TagString: Player
@@ -6302,6 +6304,40 @@ MonoBehaviour:
   moveSpeed: 8
   maxJumpHeight: 5
   maxJumpTime: 1
+--- !u!114 &1169101844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169101839}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60c945b4e9407d94d895b37658c335c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 1814757329}
+  deadSprite: {fileID: 21300000, guid: 346cfc2db60a43846b4a3b903175f1b1, type: 3}
+  elapsedTime: 0
+  duration: 3
+  jumpForce: 10
+  gravity: -36
+  velocity: {x: 0, y: 0, z: 0}
+  spriteAnimator: {fileID: 1814757331}
+--- !u!114 &1169101845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169101839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d2ff9542b84b7c4eaca175111958e19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smallMario: {fileID: 1814757330}
+  superMario: {fileID: 2142708862}
 --- !u!1001 &1169935772
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10631,7 +10667,7 @@ GameObject:
   - component: {fileID: 2142708862}
   - component: {fileID: 2142708863}
   m_Layer: 3
-  m_Name: Big
+  m_Name: Super
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10659,7 +10695,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2142708859}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -10711,7 +10747,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2142708859}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5662f2587889484eb801bf7fc052c85, type: 3}
   m_Name: 
@@ -10727,7 +10763,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2142708859}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b34c5da7d1cfe84da792e4b8e1420dd, type: 3}
   m_Name: 

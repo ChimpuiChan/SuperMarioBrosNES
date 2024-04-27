@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MarioAnimations : MonoBehaviour
+public class MarioAnimation : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
     private MarioMovement marioMovement;

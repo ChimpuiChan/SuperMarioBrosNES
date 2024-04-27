@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
         if (instance != null)
         {
             // If an instance of this GameManager is already there, then destroy this instance immediately and use that previous instance
-            DestroyImmediate(instance);
+            DestroyImmediate(gameObject);
         }
         else
         {
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     private void NewGame()
     {
         lives = 5;
-        
+        LoadLevel(1, 1);
     }
 
     private void LoadLevel(int world, int level)
@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void NextLevel()
+    public void NextLevel()
     {
         if (level == 4)
         {
@@ -77,13 +77,14 @@ public class GameManager : MonoBehaviour
 
 
     // Overloading MarioDeath (or ResetLevel) using a float variable "delay" to make it not reset the level instantly when Mario dies
-    private void MarioDeath(float delay)
+    public void MarioDeath(float delay)
     {
         Invoke(nameof(MarioDeath), delay);
     }
 
 
-    private void MarioDeath()
+    // Resets level after Mario dies
+    public void MarioDeath()
     {
         lives--;
 

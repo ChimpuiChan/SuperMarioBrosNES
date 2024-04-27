@@ -15,6 +15,8 @@ public class DeathAnimation : MonoBehaviour
     public float gravity = -36; // This value is based on Mario movement script parameters
     public Vector3 velocity;
 
+    public SpriteAnimator spriteAnimator;
+
     // Called when the script is first attached to the game object
     // Will also be called when you press the reset button in the inspector menu
     // Best used to set the values to default
@@ -26,8 +28,8 @@ public class DeathAnimation : MonoBehaviour
 
     private void OnEnable()
     {
-        UpdateSprite();
         DisablePhysics();
+        UpdateSprite();
         StartCoroutine(AnimateDeath());
     }
 
@@ -69,11 +71,13 @@ public class DeathAnimation : MonoBehaviour
         if (marioMovement != null)
         {
             marioMovement.enabled = false;
+            spriteAnimator.enabled = false;
         }
 
         if (spriteMovement != null)
         {
             spriteMovement.enabled = false;
+            spriteAnimator.enabled = false;
         }
     }
 
