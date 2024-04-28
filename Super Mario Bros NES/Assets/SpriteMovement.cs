@@ -67,6 +67,7 @@ public class SpriteMovement : MonoBehaviour
         {
             // When colliding with any object in default layer, flip the direction to opposite
             direction = -direction;
+            transform.eulerAngles -= new Vector3(0, 180, 0);
         }
     }
 }

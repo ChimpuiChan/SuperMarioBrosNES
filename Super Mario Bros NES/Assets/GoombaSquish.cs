@@ -27,6 +27,14 @@ public class GoombaSquish : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Shell"))
+        {
+            GoombaDeath();
+        }
+    }
+
     private void Squish()
     {
         GetComponent<Collider2D>().enabled = false;
@@ -34,6 +42,14 @@ public class GoombaSquish : MonoBehaviour
         GetComponent<SpriteMovement>().enabled = false;
         spriteRenderer.sprite = squishedGoomba;
         Destroy(gameObject, 0.5f); // Destroy after 0.5 seconds
+    }
+
+    private void GoombaDeath()
+    {
+        GetComponent<SpriteAnimator>().enabled = false;
+        GetComponent<SpriteMovement>().enabled = false;
+        GetComponent<DeathAnimation>().enabled = true;
+        Destroy(gameObject, 3f);
     }
 
 }

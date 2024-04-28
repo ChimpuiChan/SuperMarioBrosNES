@@ -24,6 +24,7 @@ public class MarioAnimation : MonoBehaviour
     private void OnDisable()
     {
         spriteRenderer.enabled = false;
+        run.enabled = false;
     }
 
     private void LateUpdate()
