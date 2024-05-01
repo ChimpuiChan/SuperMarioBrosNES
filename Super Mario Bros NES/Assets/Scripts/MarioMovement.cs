@@ -8,6 +8,7 @@ public class MarioMovement : MonoBehaviour
     private Vector2 velocity;
     private float inputAxis;
     private Vector2 position;
+    private Collider2D physicsCollider;
 
     // Screen bounds
     private Camera cam;
@@ -39,6 +40,23 @@ public class MarioMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         cam = Camera.main;
+        physicsCollider = GetComponent<Collider2D>();
+    }
+
+    private void OnEnable()
+    {
+        rb.isKinematic = false;
+        physicsCollider.enabled = true;
+        velocity = Vector2.zero;
+        isJumping = false;
+    }
+
+    private void OnDisable()
+    {
+        rb.isKinematic = true;
+        physicsCollider.enabled = false;
+        velocity = Vector2.zero;
+        isJumping = false;
     }
 
 
