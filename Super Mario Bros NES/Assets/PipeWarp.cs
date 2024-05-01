@@ -19,6 +19,8 @@ public class PipeWarp : MonoBehaviour
     private float lerpTime;
     private Vector3 startPosition;
     private Vector3 startSize;
+
+    private bool inUnderGround;
     
 
     private void OnTriggerStay2D(Collider2D other)
@@ -42,6 +44,9 @@ public class PipeWarp : MonoBehaviour
 
         yield return WarpPipe(player.transform, enteredPosition, enteredSize);
         yield return new WaitForSeconds(1f);
+
+        inUnderGround = warpExit.position.y < -4f;
+        Camera.main.GetComponent<CamPosition>().UnderGroundCamera(inUnderGround);
 
         // Exit Animation
         if (exitDirection != Vector3.zero)
