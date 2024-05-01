@@ -13,9 +13,14 @@ public class GoombaSquish : MonoBehaviour
             // Get MarioState script when collided with the player
             marioState = collision.gameObject.GetComponent<MarioState>();
 
+            if (marioState.starPower)
+            {
+                GoombaDeath();
+            }
+
             // The transform inside the DotProd() is Goomba's transform
             // The collision direction and Goomba direction are compared using DotProd to detect if Mario landed on Goomba's head
-            if (collision.transform.DotProd(transform, Vector2.down))
+            else if (collision.transform.DotProd(transform, Vector2.down))
             {
                 Squish();
             }

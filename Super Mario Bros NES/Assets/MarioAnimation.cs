@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MarioAnimation : MonoBehaviour
 {
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer { get; private set; }
     private MarioMovement marioMovement;
 
     public Sprite idle;

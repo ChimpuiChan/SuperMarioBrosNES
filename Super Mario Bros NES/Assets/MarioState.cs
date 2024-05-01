@@ -23,21 +23,31 @@ public class MarioState : MonoBehaviour
     private float elapsedTime;
     private float animationDuration;
 
+    // StarMan animation parameters
+    private float timeElapsed;
+    public bool starPower { get; private set; }
+
     private void Awake()
     {
         deathAnimation = GetComponent<DeathAnimation>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
+        activeMario = smallMario;
     }
     public void GotHit()
     {
-        if (super)
+        if (!dead && !starPower)
         {
-            ShrinkMario();
+            if (super)
+            {
+                ShrinkMario();
+            }
+            else
+            {
+                DeathOfMario();
+            }
         }
-        else
-        {
-            DeathOfMario();
-        }
+
+        
     }
 
     private void ShrinkMario()
@@ -100,5 +110,35 @@ public class MarioState : MonoBehaviour
         smallMario.enabled = false;
         superMario.enabled = false;
         activeMario.enabled = true;
+    }
+
+    public void StarPower(float starManDuration)
+    {
+        StartCoroutine(StarManAnimation(starManDuration));
+    }
+
+    private IEnumerator StarManAnimation(float duration)
+    {
+        starPower = true;
+
+        timeElapsed = 0f;
+        
+        while (timeElapsed < duration)
+        {
+            timeElapsed += Time.deltaTime;
+
+            if (Time.frameCount % 4 == 0)
+            {
+                // Randomizing Hue while keeping Saturation and Value same
+                activeMario.spriteRenderer.color = Random.ColorHSV(0f, 1f, 1f, 1f, 1f, 1f);
+            }
+
+            yield return null;
+        }
+
+        // Back to original color
+        activeMario.spriteRenderer.color = Color.white;
+
+        starPower = false;
     }
 }
