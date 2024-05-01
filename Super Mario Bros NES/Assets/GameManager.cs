@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public int world { get; private set; }
     public int level { get; private set; }
     public int lives { get; private set; }
+    public int coins { get; private set; }
 
     private void Awake()
     {
@@ -104,6 +105,22 @@ public class GameManager : MonoBehaviour
 
         // To delay a new game for 3 seconds
         Invoke(nameof(NewGame), 3f);
+    }
+
+    public void AddCoin()
+    {
+        coins++;
+
+        if (coins == 100)
+        {
+            AddLife();
+            coins = 0;
+        }
+    }
+
+    public void AddLife()
+    {
+        lives++;
     }
 
 

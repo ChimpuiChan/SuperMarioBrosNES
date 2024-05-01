@@ -19,6 +19,9 @@ public class BlockHit : MonoBehaviour
     private float animationDuration;
     private float lerpTime;
 
+    // Block contents
+    public GameObject item;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!isAnimating && maxHits != 0 && collision.gameObject.CompareTag("Player"))
@@ -46,6 +49,13 @@ public class BlockHit : MonoBehaviour
         if (maxHits == 0)
         {
             spriteRenderer.sprite = hitState;
+        }
+
+        if (item != null)
+        {
+            // Spawn the item when block is hit at the same positionof this block
+            // The rest of the things will be taken care of the scripts attached to the item itself
+            Instantiate(item, transform.position, Quaternion.identity);
         }
 
         StartCoroutine(HitAnimation());
