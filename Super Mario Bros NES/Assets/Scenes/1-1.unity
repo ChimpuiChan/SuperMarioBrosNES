@@ -325,6 +325,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 631868690}
     m_Modifications:
+    - target: {fileID: -6379942800913766262, guid: 792ba730f74316d45a4888866918897d, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 8233088900103774360, guid: 85156daed710fff48bc84137a972f5e1, type: 3}
+    - target: {fileID: -6379942800913766262, guid: 792ba730f74316d45a4888866918897d, type: 3}
+      propertyPath: hitState
+      value: 
+      objectReference: {fileID: 21300000, guid: cbe481260e5ab93439338e259e4d8149, type: 3}
     - target: {fileID: 1417363127725787253, guid: 792ba730f74316d45a4888866918897d, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
       value: 1
@@ -532,7 +540,7 @@ PrefabInstance:
     - target: {fileID: 222891775461469312, guid: 3533b5f691ff533498931ba0cfa827f0, type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 1941741137512101842, guid: 7f04306499b86d4439219f11e8f753b3, type: 3}
+      objectReference: {fileID: 7201599386234772842, guid: 58d34f5a6ff3ffa45924b168feb6d948, type: 3}
     - target: {fileID: 5309610099745107145, guid: 3533b5f691ff533498931ba0cfa827f0, type: 3}
       propertyPath: m_Name
       value: MysteryBlock (4)
@@ -5513,6 +5521,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 631868690}
     m_Modifications:
+    - target: {fileID: -6379942800913766262, guid: 792ba730f74316d45a4888866918897d, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 1941741137512101842, guid: 7f04306499b86d4439219f11e8f753b3, type: 3}
+    - target: {fileID: -6379942800913766262, guid: 792ba730f74316d45a4888866918897d, type: 3}
+      propertyPath: maxHits
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -6379942800913766262, guid: 792ba730f74316d45a4888866918897d, type: 3}
+      propertyPath: hitState
+      value: 
+      objectReference: {fileID: 21300000, guid: cbe481260e5ab93439338e259e4d8149, type: 3}
     - target: {fileID: 1417363127725787253, guid: 792ba730f74316d45a4888866918897d, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
       value: 1
@@ -9060,7 +9080,7 @@ PrefabInstance:
     - target: {fileID: 222891775461469312, guid: 3533b5f691ff533498931ba0cfa827f0, type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 1941741137512101842, guid: 7f04306499b86d4439219f11e8f753b3, type: 3}
+      objectReference: {fileID: 4746534392537652090, guid: c778e071abc6fa24e86e35346facc15d, type: 3}
     - target: {fileID: 5309610099745107145, guid: 3533b5f691ff533498931ba0cfa827f0, type: 3}
       propertyPath: m_Name
       value: MysteryBlock (13)
@@ -9134,7 +9154,7 @@ PrefabInstance:
     - target: {fileID: 222891775461469312, guid: 3533b5f691ff533498931ba0cfa827f0, type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 1941741137512101842, guid: 7f04306499b86d4439219f11e8f753b3, type: 3}
+      objectReference: {fileID: 7201599386234772842, guid: 58d34f5a6ff3ffa45924b168feb6d948, type: 3}
     - target: {fileID: 5309610099745107145, guid: 3533b5f691ff533498931ba0cfa827f0, type: 3}
       propertyPath: m_Name
       value: MysteryBlock (6)
