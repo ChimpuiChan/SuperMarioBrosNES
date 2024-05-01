@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Linq.Expressions;
 using UnityEngine;
 
 public class MarioState : MonoBehaviour
@@ -6,6 +8,9 @@ public class MarioState : MonoBehaviour
     // This script handles Mario's animations and is attached to both small and big Mario
     public MarioAnimation smallMario;
     public MarioAnimation superMario;
+    private MarioAnimation activeMario;
+
+    private CapsuleCollider2D capsuleCollider;
 
     private DeathAnimation deathAnimation;
 
@@ -14,9 +19,14 @@ public class MarioState : MonoBehaviour
     public bool small => smallMario.enabled;
     public bool dead => deathAnimation.enabled;
 
+    // Grow or Shrink animation parameters
+    private float elapsedTime;
+    private float animationDuration;
+
     private void Awake()
     {
         deathAnimation = GetComponent<DeathAnimation>();
+        capsuleCollider = GetComponent<CapsuleCollider2D>();
     }
     public void GotHit()
     {
@@ -32,7 +42,26 @@ public class MarioState : MonoBehaviour
 
     private void ShrinkMario()
     {
-        // Coming soon
+        smallMario.enabled = true;
+        superMario.enabled = false;
+        activeMario = smallMario;
+
+        capsuleCollider.size = new Vector2(1f, 1f);
+        capsuleCollider.offset = new Vector2(0f, 0f);
+
+        StartCoroutine(ScaleAnimation());
+    }
+
+    public void GrowMario()
+    {
+        smallMario.enabled = false;
+        superMario.enabled = true;
+        activeMario = superMario;
+
+        capsuleCollider.size = new Vector2(1f, 2f);
+        capsuleCollider.offset = new Vector2(0, 0.5f);
+
+        StartCoroutine(ScaleAnimation());
     }
 
     private void DeathOfMario()
@@ -44,5 +73,32 @@ public class MarioState : MonoBehaviour
 
         // Reset level after 3 seconds for death animation to play
         GameManager.instance.MarioDeath(3f);
+    }
+
+    private IEnumerator ScaleAnimation()
+    {
+        elapsedTime = 0f;
+        animationDuration = 0.5f;
+
+        while (elapsedTime < animationDuration)
+        {
+            elapsedTime += Time.deltaTime;
+
+            if (Time.frameCount % 4 == 0)
+            {
+                // Display this animation for every 4 frames for 0.5 seconds
+                // Small Mario will be disabled, then Super Mario will be enabled and next frame, small Mario will be enabled and Super Mario will be disabled
+                // This way, it just flickers between the two for 0.5 seconds every 4 frames
+                smallMario.enabled = !smallMario.enabled;
+                superMario.enabled = !smallMario.enabled;
+            }
+
+            yield return null;
+        }
+
+        // We don't know what is the state of Mario currently, so we just disable both small and super and enable the active Mario
+        smallMario.enabled = false;
+        superMario.enabled = false;
+        activeMario.enabled = true;
     }
 }
