@@ -12,8 +12,6 @@ public class PowerUp : MonoBehaviour
 
     public PowerUpType type;
 
-    public float starManDuration = 10f;
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -41,7 +39,7 @@ public class PowerUp : MonoBehaviour
                 break;
 
             case PowerUpType.StarMan:
-                player.GetComponent<MarioState>().StarPower(starManDuration);
+                player.GetComponent<MarioState>().StarPower(10f);
                 break;
         }
 
